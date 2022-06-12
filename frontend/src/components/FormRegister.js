@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 
 export default function FormRegister () {
 
@@ -9,14 +9,15 @@ export default function FormRegister () {
   const onInputChange = ( { target } ) => {
     setRegister( ( prev ) => ( {
       ...prev,
-      [target.name]:target.value,
-    }))
-  }
+      [ target.name ]: target.value,
+    } ) );
+  };
   
   const onHandleClick = () => {
     axios.post( 'http://localhost:3000/patient', register )
-    .then((response)=> console.log(response))
-  }
+      .then( ( data ) => console.log( data ) )
+      .then( setRegister( { name: '', birthdate: '', email: '', address: '' } ) );
+  };
 
   return (
     <div>
