@@ -10,7 +10,14 @@ router.post('/', async (req, res) => {
 router.get('/', async (_req, res) => {
     const patient = await service.getPatient();
     return res.status(201).json(patient);
-});
+} );
+
+router.get( '/:id', async ( req, res ) => {
+    const { id } = req.params;
+    const patient = await service.getById(id);
+    return res.status(201).json(patient);
+} );
+
 
 router.put('/:id', async (req, res) => {
     const { id } = req.params;

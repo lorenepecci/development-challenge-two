@@ -1,4 +1,4 @@
-const { patientRegister } = require('../../database/models'); 
+const { PatientRegister } = require('../../database/models'); 
 
 const createPatient = ({
     name,
@@ -6,7 +6,7 @@ const createPatient = ({
     email,
     address
 }) => {
-    return patientRegister.create({
+    return PatientRegister.create({
         name,
         birthdate,
         email,
@@ -15,7 +15,11 @@ const createPatient = ({
 };
 
 const getPatient = () => {
-    return patientRegister.findAll();
+    return PatientRegister.findAll();
+};
+
+const getById = (id) => {
+    return PatientRegister.findByPk( id );
 };
 
 const updatePatient = async (id, {
@@ -24,7 +28,7 @@ const updatePatient = async (id, {
     email,
     address
 }) => {
-    const [qtdUpdated] = await patientRegister.update({
+    const [qtdUpdated] = await PatientRegister.update({
         name,
         birthdate,
         email,
@@ -36,7 +40,7 @@ const updatePatient = async (id, {
 };
 
 const removePatient = async (id) => {
-    const qtdRemoved = await patientRegister.destroy({
+    const qtdRemoved = await PatientRegister.destroy({
         where: { id }
     })
     return qtdRemoved > 0;
@@ -45,6 +49,7 @@ const removePatient = async (id) => {
 module.exports = {
     createPatient,
     getPatient,
+    getById ,
     updatePatient,
     removePatient
 }
