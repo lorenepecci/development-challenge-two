@@ -6,8 +6,13 @@ const middlewareErro = require( './src/middlewares/err' );
 app = express();
 app.use( express.json() );
 app.use( routes );
-app.use(cors());
+app.use( cors() );
 app.use( middlewareErro );
 const port = process.env.API_PORT || 3000;
-
+/* app.use(
+  cors({
+    origin: `http://localhost:${port}`,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  }),
+); */ 
 app.listen(port, () => console.log('ouvindo porta', port));
