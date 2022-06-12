@@ -4,18 +4,18 @@ const service = require('../services/patientService');
 
 router.post('/', async (req, res) => {
     const response = await service.createPatient(req.body);
-    return res.status(201).json(response);
+    return res.status(201).send(response);
 }); 
 
 router.get('/', async (_req, res) => {
     const patient = await service.getPatient();
-    return res.status(201).json(patient);
+    return res.status(201).send(patient);
 } );
 
 router.get( '/:id', async ( req, res ) => {
     const { id } = req.params;
     const patient = await service.getById(id);
-    return res.status(201).json(patient);
+    return res.status(201).send(patient);
 } );
 
 
