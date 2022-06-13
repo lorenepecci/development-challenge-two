@@ -1,6 +1,6 @@
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import api from './../services';
 import Context from './context';
 
 const Provider = ( { children } ) => {
@@ -8,7 +8,7 @@ const Provider = ( { children } ) => {
   console.log( listPatients );
   
   useEffect( () => {
-    axios.get( 'http://localhost:3000/patient' ).then( ({data} ) => setListPatients(data) );
+    api.get( '/patient' ).then( ({data} ) => setListPatients(data) );
   }, [setListPatients] );
 
   const contextData = {

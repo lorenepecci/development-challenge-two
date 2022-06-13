@@ -11,7 +11,7 @@ export default function Card ( props ) {
         open={open}
         setOpen={ setOpen }
         name={ name }
-        date={ birthdate }
+        birthdate={ birthdate }
         email={ email }
         address={ address }
         id={id}

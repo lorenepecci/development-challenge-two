@@ -4,18 +4,18 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
-import Axios from "axios";
+import api from './../../services';
 import React, { useContext, useState } from "react";
 import Context from '../../hooks/context';
 
 export default function FormDialog ( props ) {
   const { open, setOpen } = props;
-  const { name, date, email, address, id } = props;
+  const { name, birthdate, email, address, id } = props;
   const { listPatients, setListPatients } = useContext( Context );
   const [ editValues, setEditValues ] = useState( {
     id:id,
     name: name,
-    birthdate: date,
+    birthdate: birthdate,
     email: email,
     address: address
   } );
@@ -35,9 +35,9 @@ export default function FormDialog ( props ) {
   const handleEdit = () => {
     console.log(listPatients)
     console.log(id)
-    Axios.put(`http://localhost:3000/patient/${id}`, {
+    api.put(`/patient/${id}`, {
       name: editValues.name,
-      birthdate: editValues.date,
+      birthdate: editValues.birthdate,
       email: editValues.email,
       address: editValues.address
     }).then(() => {
@@ -47,7 +47,7 @@ export default function FormDialog ( props ) {
             ? {
               id: id,
               name: editValues.name,
-              birthdate: editValues.date,
+              birthdate: editValues.birthdate,
               email: editValues.email,
               address: editValues.address
             }
@@ -61,7 +61,7 @@ export default function FormDialog ( props ) {
   const handleDelete = () => {
     console.log( id )
     console.log(listPatients)
-    Axios.delete( `http://localhost:3000/patient/${id}` ).then( () => {
+    api.delete( `/patient/${id}` ).then( () => {
       const newList= listPatients.filter( ( value ) => value.id !== id )
       setListPatients(
         newList
@@ -94,8 +94,8 @@ export default function FormDialog ( props ) {
             margin="dense"
             id="birthdate"
             label="birthdate"
-            defaultValue={date}
-            type="text"
+            defaultValue={birthdate}
+            type="date"
             onChange={handleChangeValues}
             fullWidth
           />

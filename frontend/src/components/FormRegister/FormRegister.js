@@ -1,11 +1,15 @@
-import axios from 'axios';
+import { Alert } from '@mui/material';
 import React, { useContext, useState } from 'react';
+import { useHistory } from "react-router-dom";
 import Context from '../../hooks/context';
+import api from '../../services';
 import './formRegister.css';
 
 export default function FormRegister () {
-
+  let history = useHistory();
   const [ register, setRegister ] = useState( {} );
+  const [ alert, setalert ] = useState( false );
+  const [ alertMessage, setalertMessage ] = useState( '' );
   const { setListPatients } = useContext( Context );
   const { name, birthdate, email, address} = register;
   
@@ -15,11 +19,23 @@ export default function FormRegister () {
       [ target.name ]: target.value,
     } ) );
   };
-  
+
   const onHandleClick = () => {
-    axios.post( 'http://localhost:3000/patient', register )
-      .then( ( { data } ) => setListPatients( ( prev ) => ( [...prev, data])  ))
-      .then( setRegister( { name: '', birthdate: '', email: '', address: '' } ) );
+    api.post( '/patient', register )
+      .then( ( { data } ) => {
+        setListPatients( ( prev ) => ( [ ...prev, data ] ) );
+        setRegister( { name: '', birthdate: '', email: '', address: '' })
+        console.log(data.message)
+      } )
+      
+      .catch(function (error) {
+        if ( error.message === 'Request failed with status code 500' ) {
+          history.push("/erro");
+        } else {
+          setalertMessage(error.response.data)
+          setalert( true );
+        }
+      });
   };
 
   return (
@@ -44,14 +60,14 @@ export default function FormRegister () {
         type="text"
         value={ email }
         name="email"
-        placeholder="email"
+        placeholder="Email"
         onChange={onInputChange}
       />
       <input
         type="text"
         value={ address }
         name="address"
-        placeholder="address"
+        placeholder="Address"
         onChange={onInputChange}
       />
       <button
@@ -60,6 +76,7 @@ export default function FormRegister () {
       >
         Cadastrar
       </button>
+    { alert ? <Alert severity="error">{alertMessage}</Alert> : '' }
      
     </div>
   )
