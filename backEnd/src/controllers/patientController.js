@@ -1,8 +1,9 @@
 const express = require( 'express' );
+const { validateTypes } = require( '../middlewares/inputValidation' );
 const router = express.Router();
 const service = require('../services/patientService');
 
-router.post('/', async (req, res) => {
+router.post('/', validateTypes, async (req, res) => {
     const response = await service.createPatient(req.body);
     return res.status(201).send(response);
 }); 
@@ -19,7 +20,7 @@ router.get( '/:id', async ( req, res ) => {
 } );
 
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', validateTypes, async (req, res) => {
     const { id } = req.params;
     const isUpdate = await service.updatePatient(id, req.body);
     if (isUpdate) {

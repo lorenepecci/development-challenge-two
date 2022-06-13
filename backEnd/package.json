@@ -14,7 +14,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "joi": "^17.6.0",
+    "joi-email-extensions": "^0.0.1",
     "mysql2": "^2.3.3",
+    "react-router-dom": "^6.3.0",
     "sequelize": "^6.20.1",
     "sequelize-cli": "^6.4.1"
   },

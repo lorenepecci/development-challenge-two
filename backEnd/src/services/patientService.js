@@ -1,4 +1,4 @@
-const { PatientRegister } = require('../../database/models'); 
+const { PatientRegister } = require( '../../database/models' ); 
 
 const createPatient = ({
     name,
