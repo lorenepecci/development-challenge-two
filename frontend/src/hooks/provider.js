@@ -5,7 +5,8 @@ import Context from './context';
 
 const Provider = ( { children } ) => {
   const [ listPatients, setListPatients ] = useState( [] );
-  console.log(listPatients)
+  console.log( listPatients );
+  
   useEffect( () => {
     axios.get( 'http://localhost:3000/patient' ).then( ({data} ) => setListPatients(data) );
   }, [setListPatients] );
