@@ -33,7 +33,8 @@ export default function FormRegister () {
         onChange={onInputChange}
       />
       <input
-        type="text"
+        className="dateInput"
+        type="date"
         value={ birthdate }
         name="birthdate"
         placeholder="birthdate"

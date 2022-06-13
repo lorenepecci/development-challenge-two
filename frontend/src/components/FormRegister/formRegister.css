@@ -20,6 +20,10 @@ input {
   padding: 7px 5px;
 }
 
+.dateInput {
+  padding: 7px 33px;
+}
+
 button {
   padding: 2px 5px;
   
