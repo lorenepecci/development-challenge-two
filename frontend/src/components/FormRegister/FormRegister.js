@@ -1,9 +1,12 @@
 import axios from 'axios';
-import React, { useState , useEffect} from 'react';
+import React, { useContext, useState } from 'react';
+import Context from '../../hooks/context';
+import './formRegister.css';
 
 export default function FormRegister () {
 
   const [ register, setRegister ] = useState( {} );
+  const { setListPatients } = useContext( Context );
   const { name, birthdate, email, address} = register;
   
   const onInputChange = ( { target } ) => {
@@ -17,10 +20,13 @@ export default function FormRegister () {
     axios.post( 'http://localhost:3000/patient', register )
       .then( ( data ) => console.log( data ) )
       .then( setRegister( { name: '', birthdate: '', email: '', address: '' } ) );
+      setListPatients( ( prev ) => ( [...prev, register]) 
+    ); 
   };
 
   return (
-    <div>
+    <div className="form-container">
+      <p className="form-title">Registro de Paciente</p>
       <input
         type="text"
         value={ name }

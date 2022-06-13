@@ -1,19 +1,18 @@
 import React from 'react';
-import './App.css';
-import FormRegister from './components/FormRegister';
-import ListOfPatientsCards from './components/ListOfPatientsCards';
+import FormRegister from './components/FormRegister/FormRegister';
+import ListOfPatientsCards from './components/ListPatientsCards/ListOfPatientsCards';
 import Provider from './hooks/provider';
 
 function App () {
   
   return (
     <Provider>
-    <div className="App">
+    <div className="app-container">
       <h1> medcloud</h1>
-      <div className="container-register">
+      <div>
         <FormRegister />
       </div>
-      <div>
+      <div className="list-container">
         <ListOfPatientsCards />    
       </div>
     </div>
