@@ -18,7 +18,7 @@ export default function FormRegister () {
   
   const onHandleClick = () => {
     axios.post( 'http://localhost:3000/patient', register )
-      .then( ( data ) => setListPatients( ( prev ) => ( [...prev, data])  ))
+      .then( ( { data } ) => setListPatients( ( prev ) => ( [...prev, data])  ))
       .then( setRegister( { name: '', birthdate: '', email: '', address: '' } ) );
   };
 
