@@ -3,11 +3,11 @@
 
 1. Clone o repositório e entre na pasta do repositório que você acabou de clonar
 
-2. Entre na pasta backEnd e Instale as dependências `npm install`
+2. Entre na pasta backEnd e Instale as dependências: `npm install`
 
 3. Ainda nesta pasta, abra uma janela do terminal e inicie o servidor: `npm run dev`
 
-4. Entre na pasta backEnd e Instale as dependências `npm install`
+4. Entre na pasta frontend e Instale as dependências: `npm install`
 
 5. Ainda nesta pasta, abra outra janela do terminal e inicie o cliente: `npm start`
 
