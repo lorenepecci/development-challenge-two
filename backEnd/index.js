@@ -15,12 +15,13 @@ app.use(
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   }),
 );
- 
-app.use((req,res,next)=>{
-  res.setHeader('Access-Control-Allow-Origin','*');
-  res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
-  next(); 
-} )
+
+app.use( ( req, res, next ) => {
+  res.setHeader( 'Access-Control-Allow-Origin', '*' );
+  res.setHeader( 'Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE' );
+  next();
+} );
+
 app.use( routes );
 app.use( middlewareErro );
 app.listen( port, () => console.log( 'ouvindo porta', port ) );
