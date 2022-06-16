@@ -5,7 +5,7 @@ import Context from './context';
 
 const Provider = ( { children } ) => {
   const [ listPatients, setListPatients ] = useState( [] );
-  console.log( listPatients );
+  const [ errorMessage, setErrorMessage ] = useState( '' );
   
   useEffect( () => {
     api.get( '/patient' ).then( ({data} ) => setListPatients(data) );
@@ -14,6 +14,8 @@ const Provider = ( { children } ) => {
   const contextData = {
     listPatients,
     setListPatients,
+    errorMessage,
+    setErrorMessage,
   };
 
   return (

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Context from '../../hooks/context';
 
-export default function index() {
+const Error = ( { match: { params: { item } } } ) => {
+  const { errorMessage }   = useContext( Context );
   return (
     <div >
-      <h3>500. That's an error.</h3>
-      <p style={{display: 'flex', justifyContent: 'center'}}>Please try again later.</p>
+      <h3>That's an error {item}</h3>
+      <p style={{display: 'flex', justifyContent: 'center'}}>{errorMessage}. Please try again.</p>
     </div>
   )
 }
+
+export default Error;

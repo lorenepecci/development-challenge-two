@@ -5,15 +5,16 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Context from '../../hooks/context';
 import api from './../../services';
-import { useHistory } from "react-router-dom";
 
 export default function FormDialog ( props ) {
   let history = useHistory();
   const { open, setOpen } = props;
   const { name, birthdate, email, address, id } = props;
   const { listPatients, setListPatients } = useContext( Context );
+  const { setErrorMessage } = useContext( Context );
   const [ editValues, setEditValues ] = useState( {
     id:id,
     name: name,
@@ -35,8 +36,6 @@ export default function FormDialog ( props ) {
   };
 
   const handleEdit = () => {
-    console.log(listPatients)
-    // console.log( id )
       api.put( `/patient/${ id }`, {
         name: editValues.name,
         birthdate: editValues.birthdate,
@@ -56,26 +55,22 @@ export default function FormDialog ( props ) {
               : value;
           } )
         );
-      console.log('aqui dentro')
       } )
-      .catch(function (error) {
-        history.push( "/erro" );
+        .catch( function ( error ) {
+          console.log( error.response )
+          setErrorMessage( error.response.data );
+        history.push( `/erro/${error.response.status}` );
       });
     handleClose();
   };
 
   const handleDelete = () => {
-    console.log( id )
-    console.log(listPatients)
     api.delete( `/patient/${ id }` )
       .then( () => {
       const newList= listPatients.filter( ( value ) => value.id !== id )
       setListPatients(
         newList
       )} )
-      .catch(function (error) {
-        history.push( "/erro" );
-      } );
     
       handleClose();
   };

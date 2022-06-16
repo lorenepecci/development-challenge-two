@@ -30,13 +30,9 @@ export default function FormRegister () {
         setRegister( { name: '', birthdate: '', email: '', address: '' } )
       } )
       
-      .catch(function (error) {
-        if ( error.message === 'Request failed with status code 500' ) {
-          history.push( "/erro" );
-        } else {
-          setalertMessage( error.response.data );
-          setalert( true );
-        }
+      .catch( function ( error ) {
+        setalertMessage( error.response.data );
+        setalert( true );
       });
   };
 
