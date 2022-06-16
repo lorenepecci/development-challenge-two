@@ -8,7 +8,7 @@ export default function Card ( props ) {
     return (
     <>
       <FormDialog
-        open={open}
+        open={open}   
         setOpen={ setOpen }
         name={ name }
         birthdate={ birthdate }

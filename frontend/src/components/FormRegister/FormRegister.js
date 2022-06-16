@@ -9,6 +9,7 @@ export default function FormRegister () {
   let history = useHistory();
   const [ register, setRegister ] = useState( {} );
   const [ alert, setalert ] = useState( false );
+  const [ isAlert, setisAlert ] = useState( false );
   const [ alertMessage, setalertMessage ] = useState( '' );
   const { setListPatients } = useContext( Context );
   const { name, birthdate, email, address} = register;
@@ -21,18 +22,19 @@ export default function FormRegister () {
   };
 
   const onHandleClick = () => {
+    setisAlert( true );
     api.post( '/patient', register )
       .then( ( { data } ) => {
+        setalert( false );
         setListPatients( ( prev ) => ( [ ...prev, data ] ) );
-        setRegister( { name: '', birthdate: '', email: '', address: '' })
-        console.log(data.message)
+        setRegister( { name: '', birthdate: '', email: '', address: '' } )
       } )
       
       .catch(function (error) {
         if ( error.message === 'Request failed with status code 500' ) {
-          history.push("/erro");
+          history.push( "/erro" );
         } else {
-          setalertMessage(error.response.data)
+          setalertMessage( error.response.data );
           setalert( true );
         }
       });
@@ -57,7 +59,7 @@ export default function FormRegister () {
         onChange={onInputChange}
       />
       <input
-        type="text"
+        type="email"
         value={ email }
         name="email"
         placeholder="Email"
@@ -76,8 +78,9 @@ export default function FormRegister () {
       >
         Cadastrar
       </button>
-    { alert ? <Alert severity="error">{alertMessage}</Alert> : '' }
-     
+      { isAlert ? 
+    alert ? <Alert severity="error">{alertMessage}</Alert> :  <Alert severity="success">Sucesso!</Alert>
+     : ''}
     </div>
   )
 }

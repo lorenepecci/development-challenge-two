@@ -4,11 +4,13 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
-import api from './../../services';
 import React, { useContext, useState } from "react";
 import Context from '../../hooks/context';
+import api from './../../services';
+import { useHistory } from "react-router-dom";
 
 export default function FormDialog ( props ) {
+  let history = useHistory();
   const { open, setOpen } = props;
   const { name, birthdate, email, address, id } = props;
   const { listPatients, setListPatients } = useContext( Context );
@@ -34,40 +36,48 @@ export default function FormDialog ( props ) {
 
   const handleEdit = () => {
     console.log(listPatients)
-    console.log(id)
-    api.put(`/patient/${id}`, {
-      name: editValues.name,
-      birthdate: editValues.birthdate,
-      email: editValues.email,
-      address: editValues.address
-    }).then(() => {
-      setListPatients(
-        listPatients.map((value) => {
-          return value.id == id
-            ? {
-              id: id,
-              name: editValues.name,
-              birthdate: editValues.birthdate,
-              email: editValues.email,
-              address: editValues.address
-            }
-            : value;
-        })
-      );
-    });
+    // console.log( id )
+      api.put( `/patient/${ id }`, {
+        name: editValues.name,
+        birthdate: editValues.birthdate,
+        email: editValues.email,
+        address: editValues.address
+      } ).then( () => {
+        setListPatients(
+          listPatients.map( ( value ) => {
+            return value.id == id
+              ? {
+                id: id,
+                name: editValues.name,
+                birthdate: editValues.birthdate,
+                email: editValues.email,
+                address: editValues.address
+              }
+              : value;
+          } )
+        );
+      console.log('aqui dentro')
+      } )
+      .catch(function (error) {
+        history.push( "/erro" );
+      });
     handleClose();
   };
 
   const handleDelete = () => {
     console.log( id )
     console.log(listPatients)
-    api.delete( `/patient/${id}` ).then( () => {
+    api.delete( `/patient/${ id }` )
+      .then( () => {
       const newList= listPatients.filter( ( value ) => value.id !== id )
       setListPatients(
         newList
-      );
+      )} )
+      .catch(function (error) {
+        history.push( "/erro" );
+      } );
+    
       handleClose();
-    } );
   };
 
   return (

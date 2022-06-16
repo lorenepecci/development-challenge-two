@@ -1,2 +1,4 @@
-module.exports = (err, req, res, _next) => 
-  res.status(err.status || 500).send(err.message || "Request failed with status code 500" );
+module.exports = ( err, req, res, _next ) => {
+  console.log(err)
+  return res.status( err.status || 500 ).send( err.message );
+}
