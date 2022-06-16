@@ -18,10 +18,6 @@ const getPatient = () => {
     return PatientRegister.findAll();
 };
 
-const getById = (id) => {
-    return PatientRegister.findByPk( id );
-};
-
 const updatePatient = async (id, {
     name,
     birthdate,
@@ -49,7 +45,6 @@ const removePatient = async (id) => {
 module.exports = {
     createPatient,
     getPatient,
-    getById ,
     updatePatient,
     removePatient
 }

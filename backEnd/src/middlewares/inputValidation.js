@@ -16,6 +16,8 @@ const validateTypes = ( req, res, next ) => {
     const statusCode = {
       'any.required': 400,
       'string.min': 422,
+      'string.email': 422,
+      'date.less':422,
     };
 
     throw { status: statusCode[ type ], message: message };

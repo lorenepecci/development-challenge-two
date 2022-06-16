@@ -67,6 +67,7 @@ describe('post /patient', () => {
       expect(response).to.have.status(400);
   } );
 
+
     it( 'o corpo da resposta é um objeto', () => {
       expect(response.body).to.be.an('object');
   });

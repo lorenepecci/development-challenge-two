@@ -13,13 +13,6 @@ router.get('/', async (_req, res) => {
     return res.status(200).send(patients);
 } );
 
-router.get( '/:id', async ( req, res ) => {
-    const { id } = req.params;
-    const patient = await service.getById(id);
-    return res.status(200).send(patient);
-} );
-
-
 router.put('/:id', validateTypes, async (req, res) => {
     const { id } = req.params;
     const isUpdate = await service.updatePatient(id, req.body);

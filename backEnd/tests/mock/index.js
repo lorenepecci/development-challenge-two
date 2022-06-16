@@ -8,21 +8,24 @@ const mockCreate = (Instance, data) => {
   return data;
 };
 
-const mockFindOne = (Instance, where) => {
-  const whereFields = Object.keys(where);
+const mockUpdate = ( Instance, data, where) => {
+  if (!data || !where) {
+    return;
+  };
+ 
+  
+  const map = Instance.map( ( obj ) => (
+    obj.id == where.id ? data : obj
+  ))
+  Instance = map;
+  return { message: `Registro ${id} atualizado com sucesso!` };
+};
 
-  const result = Instance.filter(item => {
-    const onlyMatch = whereFields.map( key => item[key] === where[key]);
-    return onlyMatch.filter(v=>v).length === whereFields.length;
-  });
-
-  return result[0];
-}
 
 const mockPatientRegister = {
   create: async (data) => mockCreate( patientsData, data),
-  findAll: async () =>  patientsData,
-  findOne: async ({ where }) => mockFindOne( patientsData, where),
+  findAll: async () => patientsData,
+  update: async (data, {where}) => mockUpdate(patientsData, data, where)
 };
 
 module.exports = {
