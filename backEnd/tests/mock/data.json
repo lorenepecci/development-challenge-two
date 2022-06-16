@@ -1,0 +1,24 @@
+[
+  {
+    "address": "Rua teste a",
+    "birthdate": "1997-11-26",
+    "email": "nomea@gmail.com",
+    "id": 1,
+    "name": "Nome a de Sousa"
+  },
+  {
+    "address": "Rua teste b",
+    "birthdate": "1997-11-20",
+    "email": "nomeb@gmail.com",
+    "id": 2,
+    "name": "Nome b de Sousa"
+  },
+  {
+    "address": "Rua teste c",
+    "birthdate": "1997-11-25",
+    "email": "nomec@gmail.com",
+    "id": 3,
+    "name": "Nome c de Sousa"
+  }
+ 
+]

@@ -13,7 +13,6 @@ const validateTypes = ( req, res, next ) => {
   const { error, value } = schema.validate( req.body );
   if ( error ) {
     const { type, message } = error.details[ 0 ];
-    console.log(error)
     const statusCode = {
       'any.required': 400,
       'string.min': 422,

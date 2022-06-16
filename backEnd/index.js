@@ -22,4 +22,6 @@ app.use((req,res,next)=>{
 } )
 app.use( routes );
 app.use( middlewareErro );
-app.listen(port, () => console.log('ouvindo porta', port));
+app.listen( port, () => console.log( 'ouvindo porta', port ) );
+
+module.exports = app;
