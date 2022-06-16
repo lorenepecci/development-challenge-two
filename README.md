@@ -1,4 +1,16 @@
-## Esta aplicação usou: Node.js, express, React, Hooks, Testes de Integração, Rest Api.
+### Esta aplicação usou: Node.js, express, React, Hooks, Testes de Integração, Rest Api.
+## Instruções de visualização do projeto
+
+1. Clone o repositório e entre na pasta do repositório que você acabou de clonar
+
+2. Entre na pasta backEnd e Instale as dependências `npm install`
+
+3. Ainda nesta pasta, abra uma janela do terminal e inicie o servidor: `npm run dev`
+
+4. Entre na pasta backEnd e Instale as dependências `npm install`
+
+5. Ainda nesta pasta, abra outra janela do terminal e inicie o cliente: `npm start`
+
 
 
 # Development challenge

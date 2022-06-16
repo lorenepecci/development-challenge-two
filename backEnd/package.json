@@ -6,8 +6,7 @@
   "scripts": {
     "test": "mocha ./tests/**/*$NAME*.test.js --exit",
     "test:coverage": "nyc npm test",
-    "dev": "nodemon index.js",
-    "start": " node index.js"
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
