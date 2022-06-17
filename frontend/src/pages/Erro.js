@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Context from '../../hooks/context';
+import Context from '../hooks/context';
 
 const Error = ( { match: { params: { item } } } ) => {
   const { errorMessage }   = useContext( Context );

@@ -1,6 +1,6 @@
 import React from 'react'
-import FormRegister from '../FormRegister/FormRegister';
-import ListOfPatientsCards from '../ListPatientsCards/ListOfPatientsCards';
+import FormRegister from '../components/FormRegister/FormRegister';
+import ListOfPatientsCards from '../components/ListPatientsCards/ListOfPatientsCards';
 
 export default function index() {
   return (

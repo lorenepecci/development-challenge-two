@@ -8,9 +8,8 @@ import renderWithRouter from './renderWithRouter';
 describe('testando o App', () => {
   describe( 'pagina App inicial', () => {
     
-    
     it( 'site logo', () => {
-      renderWithRouter(<App />);
+      renderWithRouter(<App />); 
       const title = screen.getByRole( 'heading', { name: /medcloud/i } );
       expect(title).toBeInTheDocument();
     } )
