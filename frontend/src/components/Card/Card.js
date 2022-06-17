@@ -16,9 +16,9 @@ export default function Card ( props ) {
         address={ address }
         id={id}
       />
-    <div className='card-container' onClick={()=> setOpen( true )}>
+    <div className='card-container' role="dialog" onClick={()=> setOpen( true )}>
       <h3>{name}</h3>
-      <p>{ `Birthdate: ${ birthdate }` }</p>
+      <p data-testid="cardtitle">{ `Birthdate: ${ birthdate }` }</p>
       <p>{ `Email: ${ email  }`}</p>
       <p>{ `Address: ${address }`}</p>
     </div>

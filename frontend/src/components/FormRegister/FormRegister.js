@@ -1,12 +1,10 @@
 import { Alert } from '@mui/material';
 import React, { useContext, useState } from 'react';
-import { useHistory } from "react-router-dom";
 import Context from '../../hooks/context';
 import api from '../../services';
 import './formRegister.css';
 
 export default function FormRegister () {
-  let history = useHistory();
   const [ register, setRegister ] = useState( {} );
   const [ alert, setalert ] = useState( false );
   const [ isAlert, setisAlert ] = useState( false );
@@ -29,7 +27,6 @@ export default function FormRegister () {
         setListPatients( ( prev ) => ( [ ...prev, data ] ) );
         setRegister( { name: '', birthdate: '', email: '', address: '' } )
       } )
-      
       .catch( function ( error ) {
         setalertMessage( error.response.data );
         setalert( true );
@@ -37,7 +34,7 @@ export default function FormRegister () {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-container" >
       <p className="form-title">Registro de Paciente</p>
       <input
         type="text"
