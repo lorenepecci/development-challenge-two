@@ -9,8 +9,9 @@
 Utilize o arquivo .env.example como base.
 
 4. Ainda nesta pasta, abra uma janela do terminal e realize os seguintes comandos:
-  - `npx db:migrate` (cria o banco de dados)
-  - `npm db:seed:all` (insere alguns dados na tabela) *opcional 
+  - `npx sequelize db:create` (cria o banco de dados)
+  - `npx sequelize db:migrate` (cria a tabela)
+  - `npm sequelize db:seed:all` (insere alguns dados na tabela) *opcional 
   - `npm run dev` (inicia o servidor)
 
 5. Entre na pasta frontend e Instale as dependências: `npm install`
